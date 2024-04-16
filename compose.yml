@@ -1,0 +1,10 @@
+services:
+  dbt:
+    build:
+      context: .
+      dockerfile: dbt-alpine.Dockerfile
+    volumes:
+      - .:/dbt 
+    ports:
+      - "2222:22"
+    command: "/usr/sbin/sshd -D"
