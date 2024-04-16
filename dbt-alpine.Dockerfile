@@ -25,7 +25,6 @@ RUN apk update \
     && /dbt/install_snowsql \
     && /dbt/install_alpine_ssh \
     && rm install_alpine_dbt install_duckdb install_snowsql install_alpine_ssh \
-    && apk del bash \
     && apk add --no-cache zsh-vcs \
     && install_dotfiles ~ install_oh_my_zsh \
     && chmod +x ~/install_oh_my_zsh \
