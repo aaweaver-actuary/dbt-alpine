@@ -1,9 +1,14 @@
 services:
   dbt:
     image: docker.io/aaweaver9/dbt-alpine:latest
+    # build:
+    #   context: .
+    #   dockerfile: dbt-alpine.Dockerfile
     volumes:
       - .:/dbt 
     ports:
       - "2222:22"
     command: "/usr/sbin/sshd -D"
-    
+    user: root
+    working_dir: /dbt
+

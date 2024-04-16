@@ -38,7 +38,13 @@ RUN apk update \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/* \
     && touch ~/.passwords \
-    && rm -rf /dbt/dbt_project
+    && rm -rf /dbt/dbt_project \
+    && install_dotfiles /home/user install_oh_my_zsh \
+    && chmod +x /home/user/install_oh_my_zsh \
+    && . /home/user/install_oh_my_zsh \
+    && rm /home/user/install_oh_my_zsh \
+    && install_dotfiles /home/user .vimrc .passwords \
+    && exec zsh 
 
   EXPOSE $SSH_PORT
 
