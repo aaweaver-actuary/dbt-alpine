@@ -30,12 +30,13 @@ RUN apk update \
     && chmod +x ~/install_oh_my_zsh \
     && . ~/install_oh_my_zsh \
     && rm ~/install_oh_my_zsh \
-    && install_dotfiles ~ .vimrc \
+    && install_dotfiles ~ .vimrc .passwords \
     && exec zsh \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/* \
-    && touch ~/.passwords
+    && touch ~/.passwords \
+    && rm -rf /dbt/dbt_project
 
   EXPOSE 22
 
