@@ -2,6 +2,9 @@ FROM alpine:3.19
 
 WORKDIR /dbt
 
+ARG SSH_PUB_KEY
+ARG SSH_PORT=22
+
 RUN apk update \
     && apk add --no-cache \
         curl \
@@ -23,7 +26,7 @@ RUN apk update \
     && /dbt/install_alpine_dbt \
     && /dbt/install_duckdb \
     && /dbt/install_snowsql \
-    && /dbt/install_alpine_ssh \
+    && /dbt/install_alpine_ssh $SSH_PUB_KEY \
     && rm install_alpine_dbt install_duckdb install_snowsql install_alpine_ssh \
     && apk add --no-cache zsh-vcs \
     && install_dotfiles ~ install_oh_my_zsh \
@@ -38,7 +41,7 @@ RUN apk update \
     && touch ~/.passwords \
     && rm -rf /dbt/dbt_project
 
-  EXPOSE 22
+  EXPOSE $SSH_PORT
 
   SHELL ["/bin/zsh", "-c"]
 

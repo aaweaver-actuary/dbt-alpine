@@ -50,6 +50,8 @@ jobs:
         username: ${{ env.DOCKERHUB_REPO_OWNER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         tags: ${{ env.LATEST_TAG }}, v${{ env.MAJOR_VERSION }}.${{ github.run_number }}
+        args: |
+          SSH_PUB_KEY=${{ secrets.SSH_PUB_KEY }}
 
     # Push only the slim image to Docker Hub
     - name: Push images to Docker Hub
