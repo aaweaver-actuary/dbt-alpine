@@ -47,4 +47,4 @@ RUN apt-get update -y \
 
 SHELL ["/bin/zsh", "-c"]
 
-CMD ["/bin/zsh"]
+CMD sleep infinity
