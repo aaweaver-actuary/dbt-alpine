@@ -27,7 +27,9 @@ RUN apt-get update -y \
     && /dbt/install_snowsql \
     && rm install_dbt install_duckdb install_snowsql \
 \
-    && install_dotfiles ~ install_oh_my_zsh \
+    && apt-get install curl -y \
+    && exec zsh \
+    && install_dotfiles ~ install_oh_my_zsh \    
     && chmod +x ~/install_oh_my_zsh \
     && . ~/install_oh_my_zsh \
     && rm ~/install_oh_my_zsh \
