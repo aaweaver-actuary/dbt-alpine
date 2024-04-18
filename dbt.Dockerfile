@@ -45,4 +45,6 @@ RUN apt-get update -y \
 \
     && exec zsh 
 
-  SHELL ["/bin/zsh", "-c"]
+SHELL ["/bin/zsh", "-c"]
+
+CMD ["/bin/zsh"]
