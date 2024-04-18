@@ -37,6 +37,10 @@ RUN apt-get update -y \
     && touch ~/.passwords \
     && rm -rf /dbt/dbt_project \
 \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && apt-get autoclean -y \
+\
     && exec zsh 
 
   SHELL ["/bin/zsh", "-c"]
