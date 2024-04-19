@@ -19,13 +19,16 @@ RUN apt-get update -y \
     && install_dotfiles /dbt install_dbt \
                              install_duckdb \
                              install_snowsql \
+                             install_nvim \
     && chmod +x /dbt/install_dbt \
                 /dbt/install_duckdb \
                 /dbt/install_snowsql \
+                /dbt/install_nvim \
     && /dbt/install_dbt \
     && /dbt/install_duckdb \
     && /dbt/install_snowsql \
-    && rm install_dbt install_duckdb install_snowsql \
+    && /dbt/install_nvim \
+    && rm install_dbt install_duckdb install_snowsql install_nvim \
 \
     && apt-get install curl -y \
     && exec zsh \
@@ -34,7 +37,7 @@ RUN apt-get update -y \
     && . ~/install_oh_my_zsh \
     && rm ~/install_oh_my_zsh \
 \
-    && install_dotfiles ~ .vimrc .passwords \
+    && install_dotfiles ~ .zshrc .zsh_aliases .vimrc .passwords \
     && exec zsh \
     && touch ~/.passwords \
     && rm -rf /dbt/dbt_project \
