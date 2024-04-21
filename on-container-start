@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+# Install dotfiles
+install_dotfiles /dbt install_dbt
+
+# Install dbt
+chmod +x install_*
+./install_dbt
+
+# Remove test dbt_project folder
+rm -rf dbt_project
+
+# Add dbt venv to .gitignore
+echo "dbt/bin" >> .gitignore
+echo "dbt/include" >> .gitignore
+echo "dbt/lib" >> .gitignore
+echo "dbt/lib64" >> .gitignore
+
+# Clean up
+rm install_dbt
+
+# Copy profiles.yml to ~/.dbt/profiles.yml
+cp ./profiles.yml ~/.dbt/profiles.yml
+
+# Load the .env environment variables
+source .env

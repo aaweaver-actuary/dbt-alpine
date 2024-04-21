@@ -2,6 +2,8 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
 
 WORKDIR /dbt
 
+COPY ./on-container-start /dbt/on-container-start
+
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get full-upgrade -y \
@@ -49,5 +51,7 @@ RUN apt-get update -y \
     && exec zsh 
 
 SHELL ["/bin/zsh", "-c"]
+
+ENTRYPOINT ["/dbt/on-container-start"]
 
 CMD sleep infinity
